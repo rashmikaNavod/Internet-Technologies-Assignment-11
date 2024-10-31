@@ -4,12 +4,20 @@
     --primary-color: rgb(0, 122, 255);
     --dark-color: #373737;
 }
-
+*{
+    box-sizing: border-box;
+}
 body{
     font-family: "Jost", sans-serif;
     font-weight: 400;
     color: #555;
     
+}
+.text-brown{
+    color: #555;
+}
+.width-80{
+    width: 70%;
 }
 img{
     max-width: 100%;

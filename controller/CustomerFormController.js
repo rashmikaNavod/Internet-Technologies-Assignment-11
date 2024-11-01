@@ -22,7 +22,7 @@ const loadCustomerTable = ()=>{
     $("#customerTableBody").empty();
     customer_array.map((item,index)=>{
         console.log(item);
-        let data = `<tr><td>${item.mobileNumber}</td><td>${item.name}</td><td>${item.email}</td><td>${item.address}`
+        let data = `<tr><td>${item.mobileNumber}</td><td>${item.name}</td><td>${item.email}</td><td>${item.address}</td></tr>`
         $("#customerTableBody").append(data);
     })
 };

@@ -63,7 +63,6 @@
 
         </div>
 
-
         <!-- customer -->
         <div id="customer-div" class="container customer mt-3">
 
@@ -132,11 +131,69 @@
         </div>
 
         <!-- item -->
-        <div id="item-div" class="container item">
+        <div id="item-div" class="container item mt-3">
 
-            <div>
-                <h2 class="mb-3 mt-3 text-center">Item Manage</h2>
+            <div class="card my-4">
+                <div class="card-header text-center fs-5 fw-medium text-brown">Item Manage</div>
+
+                <div class="card-body">
+                    <form >
+
+                      <div class="row mb-3 gap-3 gap-sm-0">
+              
+                        <div class="col-sm-6">
+                          <label for="itemCode" class="form-label">Item Code</label>
+                          <input type="text" class="form-control" id="itemCode" placeholder="Item Code" required>
+                        </div>
+              
+                        <div class="col-sm-6">
+                          <label for="description" class="form-label">Description</label>
+                          <input type="text" class="form-control" id="description" placeholder="Description" required>
+                        </div>
+              
+                      </div>
+                      
+                      <div class="row mb-3 gap-3 gap-sm-0">
+              
+                        <div class="col-sm-6">
+                          <label for="qty" class="form-label">Qty</label>
+                          <input type="number" class="form-control" id="qty" placeholder="Qty" required>
+                        </div>
+              
+                        <div class="col-sm-6">
+                          <label for="price" class="form-label">Price(Rs)</label>
+                          <input type="number" class="form-control" id="price" placeholder="Price" required>
+                        </div>
+              
+                      </div>
+              
+                      <div class="d-flex flex-column gap-2 flex-sm-row justify-content-center mt-5">
+                        <button id="item_add_btn" type="button" class="btn btn-primary fw-medium  ">Add Item</button>
+                        <button id="item_update_btn" type="button" class="btn btn-success fw-medium ">Update Item</button>
+                        <button id="item_delete_btn" type="button" class="btn btn-danger fw-medium ">Delete Item</button>
+                      </div>
+              
+                    </form>
+                </div>
+
             </div>
+
+            <h3 class="text-center fs-5 fw-medium text-brown mt-3">Item List</h3>
+
+            <table class="table table-bordered table-striped mt-3 rounded-4">
+
+              <thead>
+              <tr>
+                <th class="text-center">Item code</th>
+                <th class="text-center">Description</th>
+                <th class="text-center">Qty</th>
+                <th class="text-center">Price</th>
+              </tr>
+              </thead>
+              <tbody id="itemTableBody" class="text-center">
+              </tbody>
+
+            </table>
 
         </div>
 
@@ -157,6 +214,7 @@
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script type="" src="js/script.js"></script>
 <script type="module" src="controller/CustomerFormController.js"></script>
+<script type="module" src="controller/ItemFormController.js"></script>
 
 </body>
 </html>

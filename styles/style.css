@@ -114,7 +114,12 @@ main{
     gap: 100PX;
     padding-top: 75px;
 }
-
+.height200{
+    height: 200px;
+}
+.width350{
+    width: 350px;
+}
 .customer {
     display: none;
     width: 100%;

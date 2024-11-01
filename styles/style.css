@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&display=swap');
 
 :root{
-    --primary-color: rgb(0, 122, 255);
+    --primary-color: #ff651c;
     --dark-color: #373737;
 }
 *{
@@ -11,7 +11,9 @@ body{
     font-family: "Jost", sans-serif;
     font-weight: 400;
     color: #555;
-    
+}
+.vav-bar-second-name{
+    color: #ff651c;
 }
 .text-brown{
     color: #555;
@@ -28,7 +30,7 @@ a{
     cursor: pointer;
 }
 a:hover{
-    color: rgb(0, 122, 255);
+    color: var(--primary-color);
     text-decoration: none;
 }
 
@@ -110,6 +112,7 @@ main{
     display: flex;
     flex-direction: column;
     gap: 100PX;
+    padding-top: 75px;
 }
 
 .customer {
@@ -117,33 +120,26 @@ main{
     width: 100%;
     height: max-content;
     position: relative;
-    z-index: -1;
-    top: 75px;
 }
 .item{
     display: none;
     width: 100%;
     height: max-content;
     position: relative;
-    z-index: -1;
-    top: 75px;
 }
 .order{
     display: none;
     width: 100%;
     height: max-content;
     position: relative;
-    z-index: -1;
-    top: 75px;
 }
 .home{
     display: block;
     width: 100%;
     height: max-content;
     position: relative;
-    z-index: -1;
-    top: 75px;
 }
+
 
 @media (max-width:991px) {
 

@@ -64,7 +64,7 @@
 
             <div class="row">
               <div class="col-sm-6 col-lg-3  height200 py-2">
-                <div class="bg-secondary-subtle d-flex justify-content-center align-items-center h-100">
+                <div class="bg-secondary-subtle d-flex justify-content-center align-items-center h-100 rounded-3">
                   <div class="text-center">
                     <h2 class="text-black-85">Customers</h2>
                     <h3 id="customer-count" class="vav-bar-second-name">0</h3>
@@ -72,7 +72,7 @@
                 </div>
               </div>
               <div class="col-sm-6 col-lg-3  height200 py-2">
-                <div class="bg-secondary-subtle d-flex justify-content-center align-items-center h-100">
+                <div class="bg-secondary-subtle d-flex justify-content-center align-items-center h-100 rounded-3">
                   <div class="text-center">
                     <h2 class="text-black-85">Items</h2>
                     <h3 id="item-count" class="vav-bar-second-name">0</h3>
@@ -80,7 +80,7 @@
                 </div>
               </div>
               <div class="col-sm-6 col-lg-3  height200 py-2">
-                <div class="bg-secondary-subtle d-flex justify-content-center align-items-center h-100">
+                <div class="bg-secondary-subtle d-flex justify-content-center align-items-center h-100 rounded-3">
                   <div class="text-center">
                     <h2 class="text-black-85">Orders</h2>
                     <h3 id="orders-count" class="vav-bar-second-name">0</h3>
@@ -88,7 +88,7 @@
                 </div>
               </div>
               <div class="col-sm-6 col-lg-3  height200 py-2">
-                <div class="bg-secondary-subtle d-flex justify-content-center align-items-center h-100">
+                <div class="bg-secondary-subtle d-flex justify-content-center align-items-center h-100 rounded-3">
                   <div class="text-center">
                     <h2 class="text-black-85">Total Revenue</h2>
                     <h3 id="total-revenue-count" class="vav-bar-second-name">Rs: 0</h3>
@@ -233,12 +233,89 @@
         </div>
 
         <!-- orders -->
-        <div id="order-div" class="container order">
+        <div id="order-div" class="container order mt-3">
 
-            <div class="mb-3 mt-3 text-center">
-                <h3 class="header">Place Order</h3>
+          <div class="card my-4">
+            <div class="card-header text-center fs-5 fw-medium text-brown">Place Order</div>
+
+            <div class="card-body">
+                <form >
+
+                  <div class="row mb-3 gap-3 gap-sm-0">
+          
+                    <div class="col-sm-4">
+                      <label for="orderId" class="form-label">OrderId</label>
+                      <input type="text" class="form-control" id="orderId" placeholder="OrderId" readonly>
+                    </div>
+          
+                    <div class="col-sm-4">
+                      <label for="date" class="form-label">Date</label>
+                      <input type="text" class="form-control" id="date" placeholder="Date" readonly>
+                    </div>
+
+                    <div class="col-sm-4">
+                      <label for="cnumber" class="form-label">Customer Number</label>
+                      <input type="text" list="searchCustomerSuggestions" class="form-control" id="cnumber" placeholder="Search Number">
+                      <datalist id="searchCustomerSuggestions"></datalist>
+                    </div>
+          
+                  </div>
+
+                  <div class="row mb-3 gap-3 gap-sm-0">
+          
+                    <div class="col-sm-3 d-flex flex-column">
+                      <label for="icode" class="form-label">Itemcode</label>
+                      <input type="text" list="searchItemSuggestions" class="form-control" id="icode" placeholder="icode" required>
+                      <datalist id="searchItemSuggestions"></datalist>
+                      <button id="enter_btn" class="btn btn-success  mt-2" style="width: 100px; align-self: center;" >Enter</button>
+                    </div>
+          
+                    <div class="col-sm-3">
+                      <label for="qtyOnHand" class="form-label">QTY on hand</label>
+                      <input type="text" class="form-control" id="qtyOnHand" placeholder="qtyOnHand" readonly>
+                    </div>
+
+                    <div class="col-sm-3">
+                      <label for="unitPrice" class="form-label">Unit Price</label>
+                      <input type="text" class="form-control" id="unitPrice" placeholder="unitPrice" readonly>
+                    </div>
+
+                    <div class="col-sm-3">
+                      <label for="iqty" class="form-label">QTY</label>
+                      <input type="text" class="form-control" id="iqty" placeholder="qty" required>
+                    </div>
+          
+                  </div>
+
+
+          
+                  <div class="d-flex flex-column gap-2 flex-sm-row justify-content-center mt-5">
+                    <button id="place_order_btn" type="button" class="btn btn-primary fw-medium  ">Place Order</button>
+                  </div>
+          
+                </form>
             </div>
 
+          </div>
+
+          <h3 class="text-center fs-5 fw-medium text-brown mt-3">Order History</h3>
+
+          <table class="table table-bordered table-striped mt-3 rounded-4">
+
+          <thead>
+          <tr>
+            <th class="text-center">OrderId</th>
+            <th class="text-center">Date</th>
+            <th class="text-center">CustomerNumber</th>
+            <th class="text-center">Itemcode</th>
+            <th class="text-center">UnitPrice</th>
+            <th class="text-center">Qty</th>
+          </tr>
+          </thead>
+          <tbody class="text-center">
+          </tbody>
+
+          </table>
 
         </div>
 
@@ -251,6 +328,7 @@
 <script type="module" src="controller/CustomerFormController.js"></script>
 <script type="module" src="controller/ItemFormController.js"></script>
 <script type="module" src="controller/HomeFormController.js"></script>
+<script type="module" src="controller/OrderFormController.js"></script>
 
 </body>
 </html>

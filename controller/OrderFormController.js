@@ -4,6 +4,8 @@ import ItemModel from "../models/ItemModel.js";
 const currentDate = new Date();
 import { validateMobile } from "../util/Validation.js";
 
+export let total_revenue = 0;
+
 $('#date').val(currentDate.toLocaleDateString());
 
 const generateOrderId = ()=>{
@@ -11,6 +13,7 @@ const generateOrderId = ()=>{
 }
 
 let oID = generateOrderId();
+
 $('#orderId').val(oID);
 
 const customer_phonenumber_list = [];
@@ -55,6 +58,7 @@ $("#orders").on('click' , function(){
             itemcode_list.push(item.itemCode);
         }
     }
+
     $('#searchItemSuggestions').empty();
 
 
@@ -74,7 +78,7 @@ $("#orders").on('click' , function(){
         });
     });
 
-    $('#icode').on('keydown', function(event){
+     $('#icode').on('keydown', function(event){
         if(event.key === 'Enter'){
             let icode = $('#icode').val();
             item_array.forEach((itm)=>{
@@ -129,25 +133,31 @@ $('#place_order_btn').on('click', function(){
           });
     }else{
 
-        if(qtyOnHand>iqty){
+        if(parseInt(qtyOnHand)<parseInt(iqty)){
             Swal.fire({
                 title: "Not Available Item",
                 text: "This item qty is "+qtyOnHand,
                 icon: "question"
               }); 
         }else{
-            let order = new OrderModel(orderId,date,cnumber,icode,unitPrice,iqty);
+            let order = new OrderModel(orderId,date,cnumber,icode,parseFloat(unitPrice),parseInt(iqty));
             order_array.push(order);
             cleanOderForm();
             loadOrderTable();
-    
+
+
             item_array.forEach((i,idx)=>{
                 if(i.itemCode===icode){
-                    let updateItem = new ItemModel(i.itemCode,i.description,(i.qty)-iqty,i.price);
+                    let updateItem = new ItemModel(i.itemCode,i.description,parseInt((i.qty)-iqty),parseFloat(i.price));
                     item_array[idx] = updateItem;
                 }
             });
         }
+
+        
+        total_revenue += (unitPrice * iqty);
+        
     }
 
-})
+
+});

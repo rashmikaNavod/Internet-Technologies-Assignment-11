@@ -1,7 +1,10 @@
 import { item_array } from "../db/Database.js";
 import ItemModel from "../models/ItemModel.js";
 
-$('#store').on('click',function(){
+    $("#store").on('click', function(){
+        loadItemTable();
+    });
+
     const generateItemCode = ()=>{
         return "i"+(item_array.length+1);
     }
@@ -18,7 +21,7 @@ $('#store').on('click',function(){
     
     const loadItemTable = ()=>{
         $("#itemTableBody").empty();
-        item_array.map((item,index)=>{
+        item_array.map((item)=>{
             let data = `<tr><td>${item.itemCode}</td><td>${item.description}</td><td>${item.qty}</td><td>${item.price}</td></tr>`
             $("#itemTableBody").append(data);
         })
@@ -77,7 +80,7 @@ $('#store').on('click',function(){
               });
         }else{
             
-            let item = new ItemModel(itemCode,description,qty,price);
+            let item = new ItemModel(itemCode,description,parseInt(qty),parseFloat(price));
             console.log(item.itemCode);
             item_array.push(item);
             cleanItemForm();
@@ -113,7 +116,7 @@ $('#store').on('click',function(){
               });
         }else{
             
-            let item = new ItemModel(itemCode,description,qty,price);
+            let item = new ItemModel(itemCode,description,parseInt(qty),parseFloat(price));
             item_array[selected_item_index] = item;
             cleanItemForm();
             loadItemTable();
@@ -151,6 +154,7 @@ $('#store').on('click',function(){
             }
         });    
     });
-});
+
+
 
 

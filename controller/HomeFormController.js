@@ -7,5 +7,8 @@ $("#home").on('click',function(){
 
     let item_count = item_array.length;
     $("#item-count").text(item_count);
+
+    let order_count = order_array.length;
+    $("#orders-count").text(order_count);
 });
 

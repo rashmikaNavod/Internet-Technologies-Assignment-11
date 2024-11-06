@@ -7,7 +7,6 @@ export default class OrderModel{
         this._itemCode = itemCode;
         this._unitPrice = unitPrice;
         this._iqty = iqty;
-        this._date = date;
     }
 
 

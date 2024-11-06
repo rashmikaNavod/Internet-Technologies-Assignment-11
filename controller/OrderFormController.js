@@ -1,17 +1,37 @@
 import { item_array,order_array,customer_array } from "../db/Database.js";
 import OrderModel from "../models/OrderModel.js";
+import ItemModel from "../models/ItemModel.js";
 const currentDate = new Date();
 import { validateMobile } from "../util/Validation.js";
 
 $('#date').val(currentDate.toLocaleDateString());
+
 const generateOrderId = ()=>{
     return "O"+(order_array.length+1);
 }
+
 let oID = generateOrderId();
 $('#orderId').val(oID);
 
 const customer_phonenumber_list = [];
 const itemcode_list = [];
+
+const cleanOderForm  = () => {
+    $('#orderId').val(generateOrderId());
+    $('#cnumber').val("");
+    $('#icode').val("");
+    $('#qtyOnHand').val("");
+    $('#unitPrice').val("");
+    $('#iqty').val("");
+};
+
+const loadOrderTable = ()=>{
+    $("#orderTableBody").empty();
+    order_array.map((order)=>{
+        let data = `<tr><td>${order.orderId}</td><td>${order.date}</td><td>${order.customerNumber}</td><td>${order.itemCode}</td>      <td>${order.unitPrice}</td><td>${order.iqty}</td></tr>`
+        $("#orderTableBody").append(data);
+    })
+};
 
 $("#orders").on('click' , function(){
 
@@ -108,7 +128,26 @@ $('#place_order_btn').on('click', function(){
             icon: "question"
           });
     }else{
-        
+
+        if(qtyOnHand>iqty){
+            Swal.fire({
+                title: "Not Available Item",
+                text: "This item qty is "+qtyOnHand,
+                icon: "question"
+              }); 
+        }else{
+            let order = new OrderModel(orderId,date,cnumber,icode,unitPrice,iqty);
+            order_array.push(order);
+            cleanOderForm();
+            loadOrderTable();
+    
+            item_array.forEach((i,idx)=>{
+                if(i.itemCode===icode){
+                    let updateItem = new ItemModel(i.itemCode,i.description,(i.qty)-iqty,i.price);
+                    item_array[idx] = updateItem;
+                }
+            });
+        }
     }
 
 })
